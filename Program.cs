@@ -55,7 +55,7 @@ namespace TspQuoteDownloader
 						continue;
 
 					// pull the quotes
-					var quotes = rows[iRow].FindElements(By.TagName("td")).Select(n => n.Text).ToArray();
+					var quotes = rows[iRow].FindElements(By.TagName("td")).Select(n => n.Text.Replace("$","")).ToArray();
 
 					// Quicken date is mm/dd/yy
 					var outputDate = date.ToString("MM/dd/yy");
