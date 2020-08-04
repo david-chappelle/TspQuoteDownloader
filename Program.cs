@@ -51,7 +51,7 @@ namespace TspQuoteDownloader
 						continue;
 
 					var dateStr = dateNode.Text;
-					if (!DateTime.TryParseExact(dateStr, "MMM dd, yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+					if (!DateTime.TryParseExact(dateStr, "MMM d, yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
 						continue;
 
 					// pull the quotes
