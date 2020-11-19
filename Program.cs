@@ -14,13 +14,14 @@ namespace TspQuoteDownloader
 		{
 			TextWriter csvWriter = (args.Length > 0) ? new StreamWriter(args[0]) : Console.Out;
 			RemoteWebDriver driver = null;
+			ChromeDriverService service = null;
 
 			try
 			{
 				var url = "https://www.tsp.gov/fund-performance/share-price-history";
 
 				// suppress diagnostics and warnings
-				var service = ChromeDriverService.CreateDefaultService();
+				service = ChromeDriverService.CreateDefaultService();
 				service.SuppressInitialDiagnosticInformation = true;
 				service.HideCommandPromptWindow = true;
 				var options = new ChromeOptions();
@@ -82,6 +83,9 @@ namespace TspQuoteDownloader
 
 				if (driver != null)
 					driver.Quit();
+
+				if (service != null)
+					service.Dispose();
 			}
 		}
 
